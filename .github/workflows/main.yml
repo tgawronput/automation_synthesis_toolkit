@@ -14,7 +14,7 @@ jobs:
   build_docker:
     runs-on: ubuntu-latest
     container:
-      image: ubuntu:bionic
+      image: ubuntu:focal
     steps:
     - uses: ros-tooling/setup-ros@0.0.26
       with:

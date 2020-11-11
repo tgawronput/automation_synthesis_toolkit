@@ -158,27 +158,6 @@ class Context
   std::map<std::pair<const char*, const char*>, void*> settings;
 
 
-public:
-  static Context<Config>& global()
-  {
-    static Context<Config> ctx;
-    return ctx;
-  }
-
-  //just a convenience function
-  Context<Config> makeNested()
-  {
-    return *this;
-  }
-
-
-  template <typename T>
-  T* build()
-  {
-    static T* instance = buildFromScratch<T>();
-    return instance;
-  }
-
   template <typename T>
   T* buildFromScratch()
   {
@@ -199,6 +178,29 @@ public:
       return (T*) it->second;
     }
   }
+
+
+public:
+  static Context<Config>& global()
+  {
+    static Context<Config> ctx;
+    return ctx;
+  }
+
+  //just a convenience function
+  Context<Config> makeNested()
+  {
+    return *this;
+  }
+
+
+  template <typename T>
+  T& build()
+  {
+    static T* instance = buildFromScratch<T>();
+    return*instance;
+  }
+
 
   //need to process bigger objects? add a case, no other way before C++2x comes
   template<class T>

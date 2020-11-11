@@ -29,3 +29,4 @@ jobs:
         package-name: ast_ros
         target-ros1-distro: noetic
         vcs-repo-file-url: ""
+        import-token: ${{ secrets.mega }}

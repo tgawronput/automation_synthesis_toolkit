@@ -16,7 +16,12 @@ jobs:
     container:
       image: ubuntu:focal
     steps:
+    - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@0.0.26
       with:
         required-ros-distributions: noetic
-    - run: ". /opt/ros/noetic/setup.sh && rosnode --help"
+    - uses: ros-tooling/action-ros-ci@0.0.18
+      with:
+        package-name: ast_ros
+        target-ros1-distro: noetic
+        vcs-repo-file-url: ""

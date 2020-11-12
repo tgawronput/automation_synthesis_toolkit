@@ -41,8 +41,6 @@ struct B
 };
 
 
-
-
 TEST_CASE("Named connections pairing")
 {
   ast::Context ctx;

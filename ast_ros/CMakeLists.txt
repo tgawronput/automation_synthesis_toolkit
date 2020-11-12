@@ -34,7 +34,7 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ast_ros
   CATKIN_DEPENDS ast_ros_msgs interactive_markers roscpp tf
-  DEPENDS system_lib
+  #DEPENDS
 )
 
 ###########

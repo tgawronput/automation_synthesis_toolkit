@@ -4,7 +4,7 @@
 
 struct ComplexType
 {
-  Real x, y;
+  double x, y;
 };
 
 struct A
@@ -43,7 +43,7 @@ struct B
 
 TEST_CASE("Named connections pairing")
 {
-  ast::Context ctx;
+  ast::Context<> ctx;
   auto a = ctx.build<A>();
   auto b = ctx.build<B>();
   a.update();
@@ -55,7 +55,7 @@ TEST_CASE("Named connections pairing")
 
 TEST_CASE("Typed connections pairing")
 {
-  ast::Context ctx;
+  ast::Context<> ctx;
   auto a = ctx.build<A>();
   auto b = ctx.build<B>();
   a.update();

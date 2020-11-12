@@ -82,9 +82,11 @@ include_directories(
 
 catch_add_test(ast_tests
         tests/math.cpp
+        tests/core.cpp
 )
 target_link_libraries(ast_tests
         ${catkin_LIBRARIES}
+        Eigen3::Eigen
 )
 
 

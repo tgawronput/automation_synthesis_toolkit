@@ -6,14 +6,18 @@
 #include <map>
 #include <type_traits>
 
+#define SRUTIL_DELEGATE_PREFERRED_SYNTAX
 #include <delegate/delegate.hpp>
 
 
+#define in(type, name) ::ast::In< type > name = #name;
+#define out(type, name) ::ast::Out< type > name = #name;
+#define set(type, name) ::ast::Setting< type > name = #name;
 
 namespace ast
 {
 
-template <typename TSignature>
+template <typename Signature>
 using Fun = srutil::delegate<Signature>;
 
 template<typename T>
@@ -79,7 +83,7 @@ struct DefaultConfig
   }
 };
 
-template <typename Config = DefaultConfig>
+template <typename Config>
 class Context;
 
 template <typename T>

@@ -1,6 +1,8 @@
 #include <catch_ros/catch.hpp>
+#include <ast/math.hpp>
 
-TEST_CASE("test_case", "[some tag]")
+TEST_CASE("QBody construction")
 {
-  REQUIRE( (1 + 1) == 2 );
+    ast::QBody q(1, 2, 3);
+    REQUIRE(q.th() == 1);
 }

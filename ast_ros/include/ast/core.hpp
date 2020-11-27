@@ -14,7 +14,7 @@ namespace ast
 {
 
 template <typename TSignature>
-using Fun = srutil::delegate<Signature>;
+using Fun = srutil::delegate<TSignature>;
 
 template<typename T>
 struct IsDerived
@@ -148,7 +148,7 @@ public:
 
 
 
-template <typename Config = DefaultConfig>
+template <typename Config>
 class Context
 {
   Config config;

@@ -1,10 +1,11 @@
 #include <catch_ros/catch.hpp>
 
 #include <ast/core.hpp>
+#include <ast/math.hpp>
 
 struct ComplexType
 {
-  Real x, y;
+  ast::Real x, y;
 };
 
 struct A
@@ -34,7 +35,7 @@ struct B
 
   void update()
   {
-    result = in()*2;
+    result = in()*3;
     complexOut().x = 10;
   }
 
@@ -50,7 +51,7 @@ TEST_CASE("Named connections pairing")
   b.update();
 
   REQUIRE(b.in2() == -1);
-  REQUIRE(b.result == 11);
+  REQUIRE(b.result == 33);
 }
 
 TEST_CASE("Typed connections pairing")

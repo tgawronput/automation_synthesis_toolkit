@@ -21,10 +21,10 @@ jobs:
       image: ubuntu:focal
     steps:
     - uses: actions/checkout@v2
-    - uses: ros-tooling/setup-ros@0.0.26
+    - uses: ros-tooling/setup-ros@0.1.0
       with:
         required-ros-distributions: noetic
-    - uses: ros-tooling/action-ros-ci@0.0.18
+    - uses: ros-tooling/action-ros-ci@0.1.0
       with:
         package-name: ast_ros
         target-ros1-distro: noetic

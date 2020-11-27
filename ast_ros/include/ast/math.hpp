@@ -1,12 +1,16 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include <Eigen/Core>
 #include <autodiff/forward.hpp>
-
+#include <autodiff/forward/eigen.hpp>
+#include <cmath>
 
 namespace ast
 {
 typedef autodiff::dual Real;
+typedef autodiff::VectorXdual Vec;
+typedef MatrixXd Mat;
 
 typedef double RealV;
 
@@ -16,8 +20,6 @@ using namespace autodiff;
 constexpr RealV epsilon = 0.001;
 
 
-typedef MatrixXd Mat;
-typedef VectorXd Vec;
 
 //struct QBody : public Vec3
 //{

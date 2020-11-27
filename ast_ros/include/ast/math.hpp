@@ -10,16 +10,17 @@ namespace ast
 {
 typedef autodiff::dual Real;
 typedef autodiff::VectorXdual Vec;
-typedef MatrixXd Mat;
 
 typedef double RealV;
+typedef Eigen::MatrixXd Mat;
+typedef Eigen::VectorXd VecV;
 
-using namespace Eigen;
-using namespace autodiff;
 
 constexpr RealV epsilon = 0.001;
 
 
+using namespace Eigen;
+using namespace autodiff;
 
 //struct QBody : public Vec3
 //{

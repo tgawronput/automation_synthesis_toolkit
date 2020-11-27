@@ -10,9 +10,9 @@
 #include <delegate/delegate.hpp>
 
 
-#define in(type, name) ::ast::In< type > name = #name;
-#define out(type, name) ::ast::Out< type > name = #name;
-#define set(type, name) ::ast::Setting< type > name = #name;
+#define ast_in(type, name) ::ast::In< type > name = #name;
+#define ast_out(type, name) ::ast::Out< type > name = #name;
+#define ast_set(type, name) ::ast::Setting< type > name = #name;
 
 namespace ast
 {
@@ -83,7 +83,7 @@ struct DefaultConfig
   }
 };
 
-template <typename Config>
+template <typename Config = DefaultConfig>
 class Context;
 
 template <typename T>
@@ -505,43 +505,43 @@ public:
                                           }
                                         };
 
-                                        template <typename T, typename... Rest>
-                                        class ModuleSequence : public ModuleSequence<Rest...>
-                                        {
-                                          T module_;
-                                        public:
-                                          ModuleSequence(T module, Rest... r) : module_(module), ModuleSequence<Rest...>(r...)
-                                          {}
+  template <typename T, typename... Rest>
+  class ModuleSequence : public ModuleSequence<Rest...>
+  {
+    T module_;
+  public:
+    ModuleSequence(T module, Rest... r) : module_(module), ModuleSequence<Rest...>(r...)
+    {}
 
-                                          void update()
-                                          {
-                                            module_->update();
-                                            ModuleSequence<Rest...>::update();
-                                          }
-                                        };
+    void update()
+    {
+      module_->update();
+      ModuleSequence<Rest...>::update();
+    }
+  };
 
-                                        template <typename T>
-                                        class ModuleSequence<T>
-                                        {
-                                          T module_;
-                                        public:
-                                          ModuleSequence(T module) : module_(module)
-                                          {}
+  template <typename T>
+  class ModuleSequence<T>
+  {
+    T module_;
+  public:
+    ModuleSequence(T module) : module_(module)
+    {}
 
-                                          void update()
-                                          {
-                                            module_->update();
-                                          }
-                                        };
+    void update()
+    {
+      module_->update();
+    }
+  };
 
 
-                                        template <typename... T>
-                                        ModuleSequence<T...> composeSequence(T... args)
-                                        {
-                                          return ModuleSequence<T...>(args...);
-                                        }
+  template <typename... T>
+  ModuleSequence<T...> composeSequence(T... args)
+  {
+    return ModuleSequence<T...>(args...);
+  }
 
-                                      }
+}
 
 
 #endif
